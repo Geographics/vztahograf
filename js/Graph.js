@@ -497,7 +497,7 @@ Kauzality.Graph.prototype = {
 
         //check for viewport constraints
         //TODO - do not hardcode these values
-        var popupWidth = 400;
+        /*var popupWidth = 400;
         var lineHeight = 32;
         var linksLen = linksAndNames.links;
         var popupHeight = lineHeight * (linksLen+1);
@@ -507,7 +507,7 @@ Kauzality.Graph.prototype = {
         var isBottomPosition = ( y > ( this.winHeight - popupHeight ) ) ? true : false;
 
         //is needed to change viewport
-        /*if( isRightPosition || isBottomPosition ) {
+        if( isRightPosition || isBottomPosition ) {
             var translate = this.zoom.translate();
             var scale = this.zoom.scale();
 
@@ -680,9 +680,20 @@ Kauzality.Graph.prototype = {
     zoomIn: function() {
     
         var currentScale = this.zoom.scale();
+        var viewportWidth = currentScale * this.winWidth;
+        var viewportHeight = currentScale * this.winHeight;
         currentScale *= 1.25
+        var newViewportWidth = currentScale * this.winWidth;
+        var newViewportHeight = currentScale * this.winHeight;
+        
+        var diffX = newViewportWidth - viewportWidth;
+        var diffY = newViewportHeight - viewportHeight;
+        var translate = this.zoom.translate();
+        translate[0] -= diffX/2;
+        translate[1] -= diffY/2;
+        this.zoom.translate( translate );
         this.zoom.scale( currentScale );
-
+      
         this.updateZoom();
     
     },
@@ -690,8 +701,19 @@ Kauzality.Graph.prototype = {
     zoomOut: function() {
         
         var currentScale = this.zoom.scale();
+        var viewportWidth = currentScale * this.winWidth;
+        var viewportHeight = currentScale * this.winHeight;
         currentScale /= 1.25
+        var newViewportWidth = currentScale * this.winWidth;
+        var newViewportHeight = currentScale * this.winHeight;
         this.zoom.scale( currentScale );
+
+        var diffX = newViewportWidth - viewportWidth;
+        var diffY = newViewportHeight - viewportHeight;
+        var translate = this.zoom.translate();
+        translate[0] -= diffX/2;
+        translate[1] -= diffY/2;
+        this.zoom.translate( translate );
 
         this.updateZoom();
     
@@ -720,7 +742,7 @@ Kauzality.Graph.prototype = {
         if( this.popupBox.isOpen && this.lastTranslate && this.lastScale ) {
 
             //temp - check if scaling, close popup if yes
-              //take care of scaling
+            //take care of scaling
             var dscale = this.lastScale - d3.event.scale;
             if( dscale == 0 ) {
 
