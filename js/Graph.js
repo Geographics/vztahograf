@@ -52,6 +52,46 @@ Kauzality.Graph = function( linkData ) {
         .attr("width", this.winWidth)
         .attr("height", this.winHeight);
 
+    //create marker symbol - TODO - do not create extra definitions for marker over state
+    this.svg.append("defs").append("marker")
+        .attr("id", "arrowhead-end")
+        .attr("refX", 6 ) /*must be smarter way to calculate shift*/
+        .attr("refY", 2)
+        .attr("markerWidth", 6)
+        .attr("markerHeight", 4)
+        .attr("orient", "auto")
+        .append("path")
+        .attr("d", "M 0,0 V 4 L4,2 Z"); 
+    this.svg.append("defs").append("marker")
+        .attr("id", "arrowhead-end-over")
+        .attr("refX", 6 ) /*must be smarter way to calculate shift*/
+        .attr("refY", 2)
+        .attr("markerWidth", 6)
+        .attr("markerHeight", 4)
+        .attr("orient", "auto")
+        .append("path")
+        .style( "fill", "black" )
+        .attr("d", "M 0,0 V 4 L4,2 Z"); 
+     this.svg.append("defs").append("marker")
+        .attr("id", "arrowhead-start")
+        .attr("refX", 6 + 3 - 11) /*must be smarter way to calculate shift*/
+        .attr("refY", 2)
+        .attr("markerWidth", 6)
+        .attr("markerHeight", 4)
+        .attr("orient", "auto")
+        .append("path")
+        .attr("d", " M 4,0 V 4 L0,2 Z");
+     this.svg.append("defs").append("marker")
+        .attr("id", "arrowhead-start-over")
+        .attr("refX", 6 + 3 - 11) /*must be smarter way to calculate shift*/
+        .attr("refY", 2)
+        .attr("markerWidth", 6)
+        .attr("markerHeight", 4)
+        .attr("orient", "auto")
+        .append("path")
+        .style( "fill", "black" ) 
+        .attr("d", " M 4,0 V 4 L0,2 Z");//this is actual shape for arrowhead
+
     //resize handler
     this.$window.resize( function() {
         self.winWidth = self.$window.width();
@@ -188,6 +228,7 @@ Kauzality.Graph.prototype = {
     createGraph: function() {
 
         var self = this;
+
         this.force = d3.layout.force()
             .nodes( d3.values( this.nodes.getNodes() ) )
             //.nodes(d3.values(nodes))
@@ -205,8 +246,9 @@ Kauzality.Graph.prototype = {
             .data(self.force.links())
             .enter().append("svg:path")
             .attr("data-id", function(d){ return  d.id; } )
-            .attr("class", "link");
-            //.attr("marker-end", "url(#end)");
+            .attr("class", "link")
+            .attr("marker-end", function(d){ return ( d.direction == "1" ) ? "url(#arrowhead-end)" : null; } )
+            .attr("marker-start", function(d){ return ( d.direction == "2" ) ? "url(#arrowhead-start)" : null; } ) ;
 
         /*this.textSelection = this.gWrapper.append( "svg:g" ).selectAll( "text" )
             .data( self.force.links() )
@@ -414,7 +456,9 @@ Kauzality.Graph.prototype = {
             var link = links[ i ];
             var linkPath = d3.select( "path[data-id='" + link.id + "']" );
             linkPath.classed( "highlight", true );
-            
+            if( linkPath.attr( "marker-end" ) ) linkPath.attr( "marker-end", "url(#arrowhead-end-over)" );
+            if( linkPath.attr( "marker-start" ) ) linkPath.attr( "marker-start", "url(#arrowhead-start-over)" );
+
             //TODO - put it on top - ugly
             var pathEl = linkPath[0][0];
             pathEl.parentNode.appendChild( pathEl );
@@ -546,7 +590,12 @@ Kauzality.Graph.prototype = {
 
         var elementsLen = this.highlightedElements.length;
         for( var i = 0; i < elementsLen; i++ ) {
-           this.highlightedElements[i].classed( "highlight", false );
+           var el = this.highlightedElements[i];
+           el.classed( "highlight", false );
+
+           if( el.attr( "marker-end" ) ) el.attr( "marker-end", "url(#arrowhead-end)" );
+           if( el.attr( "marker-start" ) ) el.attr( "marker-start", "url(#arrowhead-start)" );
+
         }
 
         //clear selection

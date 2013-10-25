@@ -108,14 +108,19 @@ svg {
 	z-index: -1;
 }
 
-path.link {
-  fill: none;
-  stroke: #ccc;
-  stroke-width: 6px;
+/* styling for arrowhead */
+path {
+  fill: #ccc;
+  stroke-width: 0px;
 }
-	path.link.highlight {
+path.link {
+   fill: none;
+   stroke: #ccc;
+   stroke-width: 9px;
+}
+	path.highlight {
 		stroke: black;
-		stroke-width: 9px;
+		/*stroke-width: 9px;*/
 	}
 
 rect {
@@ -277,7 +282,7 @@ text {
 	position: absolute;
 	top: 60px;
 	left: 20px;
-	
+
 	/* transparent #333 */
 	background-color: rgb( 51, 51, 51 );
 	background-color: rgba( 51, 51, 51, .9 );
