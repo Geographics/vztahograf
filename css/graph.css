@@ -78,6 +78,16 @@ header {
 		.group-btn.btn {
 			padding-right: 15px;
 		}
+	#color-panel { width: 106px; }
+		#color-panel .control-menu { width: 180px; }
+		#color-panel .dropdown-arrow-down {
+			position: relative;
+			top: -3px;
+			left: 5px;
+		}
+		.color-btn.btn {
+			padding-right: 15px;
+		}
 	#filter-panel { width: 111px; }
 		#filter-panel .control-menu { width: 130px; }
 		#filter-panel .dropdown-arrow-down {
@@ -141,7 +151,6 @@ text {
 /**
 * POLITICAL PARTIES 
 */
-
 .ods {	fill: #005bcc;	}
 .top {	fill: #bc09c7;	}
 .cssd { fill: #ff9000;	}
@@ -154,9 +163,21 @@ text {
 .ano { fill: #003271; }
 
 /**
+* TAGS
+*/
+.politician {	fill: #fff119; }
+.businessman {	fill: #fdb730; }
+.lawyer {	fill: #fd4c4d; }
+.manager {	fill: #cc1c8c; }
+.economist {	fill: #815caf; }
+.lobbist {	fill: #568bd9; }
+.judge {	fill: #1dbae0; }
+.bureaucrat {	fill: #27ad7d; }
+.developer {	fill: #95ce30; }
+
+/**
 *	POPUP BOX
 */
-
 #popup-box {
 	position: absolute;
 	min-width: 200px;

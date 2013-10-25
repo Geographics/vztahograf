@@ -6,9 +6,10 @@ Kauzality.App.prototype = {
 
 	init: function( data ) {
 		
+		this.groupPanel = new Kauzality.GroupPanel();
+	    this.colorPanel = new Kauzality.ColorPanel();
 	    this.filterPanel = new Kauzality.FilterPanel();
-	    this.groupPanel = new Kauzality.GroupPanel();
-
+	    
 	    //add events
 	    var self = this; 
 	    this.$document = $( document );

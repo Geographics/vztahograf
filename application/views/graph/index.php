@@ -43,6 +43,13 @@
 						<input type="radio" name="group-radio-group" value="tags">Povolání osoby
 					</div>
 				</div>
+				<div id="color-panel" class="panel">
+					<a href="#" class="color-btn btn">Rozlišit <span class="dropdown-arrow-down"></span></a>
+					<div class="control-menu">
+						<input type="radio" name="group-radio-group" value="parties" checked="true">Politická příslušnost<br />
+						<input type="radio" name="group-radio-group" value="tags">Povolání osoby
+					</div>
+				</div>
 				<div id="filter-panel" class="panel">
 					<a href="#" class="filter-btn btn">Filtrovat <span class="dropdown-arrow-down"></span></a>
 					<div class="control-menu">
@@ -104,6 +111,7 @@
 		<script type="text/javascript" src="<?php echo base_url(); ?>js/Node.js"></script>
 		
 		<script type="text/javascript" src="<?php echo base_url(); ?>js/FilterPanel.js"></script>
+		<script type="text/javascript" src="<?php echo base_url(); ?>js/ColorPanel.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>js/GroupPanel.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>js/PopupBox.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>js/Graph.js"></script>

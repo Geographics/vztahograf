@@ -33,6 +33,8 @@ Kauzality.Graph = function( linkData ) {
         self.updateFilters();
     }).on( Kauzality.GroupPanel.GROUP_UPDATE, function( event, radioVal ) {
         self.updateGroup( radioVal );
+    }).on( Kauzality.ColorPanel.COLOR_UPDATE, function( event, radioVal ) {
+        self.updateColors( radioVal );
     });
    
     //map new data
@@ -283,8 +285,8 @@ Kauzality.Graph.prototype = {
             });
         
         var r = 60;
-        this.nodeSelection.append( "rect" )
-            .attr( "width", r )
+        this.rectSelection = this.nodeSelection.append( "rect" );
+        this.rectSelection.attr( "width", r )
             .attr( "height", r )
             //color according to organization
             .attr( "class", function( d ) { return d.getOrganizationClass(); } )
@@ -408,7 +410,6 @@ Kauzality.Graph.prototype = {
         }
     
     },
-
     
     updateGroup: function( radioVal ) {
 
@@ -435,6 +436,17 @@ Kauzality.Graph.prototype = {
         this.force.start();
     
     }, 
+
+    updateColors: function( radioVal ) {
+
+        if( radioVal == "tags" ) {
+            console.log( "udpateColors", radioVal );
+            this.rectSelection.attr( "class", function( d ) { return d.getTagClass(); } )
+        } else if( radioVal == "parties" ) {
+            this.rectSelection.attr( "class", function( d ) { return d.getOrganizationClass(); } )
+        }
+
+    },
 
     onNodeMouseOver: function( targetNodeCircle, d ) {
         

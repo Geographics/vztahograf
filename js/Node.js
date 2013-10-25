@@ -5,8 +5,6 @@ Kauzality.Node = function( id, data ) {
 	this.name = data.name;
 	this.links = [];
 
-	console.log( "data", data );
-
 	//svg representation of node
 	this.element;
 
@@ -120,6 +118,12 @@ Kauzality.Node.prototype = {
 	getOrganizationClass: function() {
 	
 		return ( this.data.fk_organizations ) ? Kauzality.utils.OrganizationsUtil.getClassForOrganizationId( this.data.fk_organizations ) : null;
+	
+	},
+
+	getTagClass: function() {
+	
+		return ( this.data.fk_tags_types ) ? Kauzality.utils.OrganizationsUtil.getClassForTagId( this.data.fk_tags_types ) : null;
 	
 	},
 
