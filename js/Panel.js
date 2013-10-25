@@ -44,7 +44,7 @@ Kauzality.Panel.prototype = {
 		//set numbers
 		var total = persons.length + organizations.length + links.length;
 		this.element.select( ".total span" ).text( total );
-		
+
 		//create categories
 		if( persons.length > 0 ) this.createSublist( "Osoby", persons );
 		if( organizations.length > 0 ) this.createSublist( "Organizace", organizations );

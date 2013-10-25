@@ -179,7 +179,7 @@ Kauzality.Graph.prototype = {
             node.addLink( link );
             
         });
-    
+        
         //sort groups 
         var startAngle = 0;
         var angle = startAngle;
@@ -222,6 +222,8 @@ Kauzality.Graph.prototype = {
             angle += groupGap;
 
         });
+
+
     
     },
 

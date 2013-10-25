@@ -5,6 +5,8 @@ Kauzality.Node = function( id, data ) {
 	this.name = data.name;
 	this.links = [];
 
+	console.log( "data", data );
+
 	//svg representation of node
 	this.element;
 

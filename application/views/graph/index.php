@@ -51,7 +51,7 @@
 					</div>
 				</div>
 				<div id="about-panel" class="panel">
-					<a href="o-datech" class="about-btn btn" title="O Vztahografu">O Vztahografu</a>
+					<a href="o-datech" class="about-btn btn" title="O Vztahografu">?</a>
 				</div>
 			</div>
 		</header>
@@ -70,10 +70,26 @@
 		
 		<div id="about-page" class="clearfix">
 			<a href="#" class="about-page-close-btn ir" title="Zavřít O Vztahografu">Zavřít</a>
-			<h2>O Vztahografu</h2>
-			<p>všechna data pochází z “Mapy české korupce” vytvořené Nadačním fondem proti korupci na <a href="http://www.nfpk.cz/_userfiles/soubory/mapa/4_graf.pdf" target="_blank" title="Zdroj dat">tadytom linku.</a></p>
+			<article>
+				<h2>Mapování korupce</h2>
+				<p>Korupce má v České republice zásdní vliv na hospodaření s veřejnými prostředky a její spletitý systém 
+				dosahuje až do pater nejvyšší politiky. Orientace v takovém prostředí je velmi složitá a jeho mapováním se 
+				zabývá jen hrstka lidí. Věříme, že vytvořením silného nástroje pro mapování takového prostředí se dá alespoň 
+				část korupčního jednání zastavit.</p>
+			</article>
+			<article>
+				<h2>Aplikace</h2>
+				<p>Vztahograf je zkušební betaverzí a odrazovým můstkem připravované aplikace Kauzality. Ta bude obsahovat 
+				mnohem širší možnosti zobrazení dat, více komplexních analytických nástrojů a řadu dalších funkcí, které 
+				zde chybí a víme o tom.</p>
+			</article>
+			<article>
+				<h2>Data</h2>
+				<p>Všechna zdrojová data pochází především z dokumentu <a href="http://www.nfpk.cz/_userfiles/soubory/mapa/4_graf.pdf" target="_blank" title="Zdroj dat">Mapa české korupce</a> a dalších menších dokumentů 
+				sestavených Nadačním fondem proti korupci. Dokumenty jsou dostupné na  <a href="http://www.nfpk.cz/mapa" target="_blank" title="Mapa korupce NFPK">webu NFPK</a>. Open verze těchto dat je 
+				ke stažení <a href="<?php echo site_url('data'); ?>" target="_blank" title="Open data">zde</a>.</p>
+			</article>
 		</div>
-
 
 		<script type="text/javascript" src="<?php echo base_url(); ?>js/vendor/d3.min.js"></script>
 

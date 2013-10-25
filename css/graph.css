@@ -366,10 +366,10 @@ text {
 	
 	z-index: 1002;
 	overflow: auto;
-	width: 400px;
-	height: 300px;
-	margin-left: -200px;
-	margin-top: -150px;
+	width: 600px;
+	height: 500px;
+	margin-left: -180px;
+	margin-top: -250px;
 	padding: 30px;
 
 	color: white;
