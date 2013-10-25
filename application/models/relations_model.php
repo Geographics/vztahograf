@@ -97,11 +97,12 @@
 			}
 
 			//$query = $this->db->get_where( "persons", array( "id" => $id ) );
-			$this->db->select("persons.*, in_positions.fk_organizations, organizations.abbr as organization_abbr");
+			$this->db->select("persons.*, in_positions.fk_organizations, organizations.abbr as organization_abbr, tags_types.name as tags_types_name");
 			$this->db->from("persons");
 			$this->db->where( "persons.id", $id );
 			$this->db->join( "in_positions", "persons.id = in_positions.fk_persons" );
 			$this->db->join( "organizations", "in_positions.fk_organizations = organizations.id" );
+			$this->db->join( "tags_types", "persons.fk_tags_types = tags_types.id" );
 			$query = $this->db->get();
 
 			//print_r( $this->db->last_query() );

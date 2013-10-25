@@ -4,6 +4,19 @@ Kauzality.Panel = function() {
 	this.$document = $( document );
 	this.element = d3.select( "#list-panel" );
 
+	this.links = [];
+	this.persons = [];
+	this.organizations = [];
+
+	this.linksSelection = [];
+	this.personsSelection = [];
+	this.organizationsSelection = [];
+
+	this.$document = $( document );
+    this.$document.on( Kauzality.ColorPanel.COLOR_UPDATE, function( event, radioVal ) {
+        self.updateColors( radioVal );
+    });
+
 }
 
 Kauzality.Panel.prototype = {
@@ -13,9 +26,9 @@ Kauzality.Panel.prototype = {
 		this.clearSublists();
 
 		//set keys
-		var links = [];
-		var persons = [];
-		var organizations = [];
+		this.links = [];
+		this.persons = [];
+		this.organizations = [];
 
 		var len = data.length;
 		for( var i = 0; i < len; i++ ) {
@@ -24,17 +37,17 @@ Kauzality.Panel.prototype = {
 			if( datum instanceof Kauzality.Link ) {
 				
 				//see if filters are on and if the given element is hidden or not
-				if( this.isElementVisible( datum.element ) ) links.push( datum );
+				if( this.isElementVisible( datum.element ) ) this.links.push( datum );
 				
 			} else if( datum instanceof Kauzality.Node ) {
 
 				if( datum.type == Kauzality.Node.PERSON_TYPE ) {
 				
-					if( this.isElementVisible( datum.element ) ) persons.push( datum );
+					if( this.isElementVisible( datum.element ) ) this.persons.push( datum );
 				
 				} else if( datum.type == Kauzality.Node.ORGANIZATION_TYPE ) {
 				
-					if( this.isElementVisible( datum.element ) ) organizations.push( datum );
+					if( this.isElementVisible( datum.element ) ) this.organizations.push( datum );
 				
 				}
 			}
@@ -42,13 +55,13 @@ Kauzality.Panel.prototype = {
 		}
 
 		//set numbers
-		var total = persons.length + organizations.length + links.length;
+		var total = this.persons.length + this.organizations.length + this.links.length;
 		this.element.select( ".total span" ).text( total );
 
 		//create categories
-		if( persons.length > 0 ) this.createSublist( "Osoby", persons );
-		if( organizations.length > 0 ) this.createSublist( "Organizace", organizations );
-		if( links.length > 0 ) this.createSublist( "Vztahy", links );
+		if( this.persons.length > 0 ) this.personsSelection = this.createSublist( "Osoby", this.persons );
+		if( this.organizations.length > 0 ) this.organizationsSelection = this.createSublist( "Organizace", this.organizations );
+		if( this.links.length > 0 ) this.linksSelection = this.createSublist( "Vztahy", this.links );
 
 	},
 
@@ -74,7 +87,7 @@ Kauzality.Panel.prototype = {
 		var h2 = headerDiv.append( "h2" ).text( title );
 		var ul = sublistDiv.append( "ul" );
 
-		ul.selectAll( "li" )
+		var liSelection = ul.selectAll( "li" )
 			.data( data )
 			.enter()
 			.append( "li" )
@@ -89,7 +102,22 @@ Kauzality.Panel.prototype = {
 				self.$document.trigger( Kauzality.Panel.NODE_CLICK, [ d.id ] );
 			});
 
-	}
+		return liSelection;
+	}, 
+
+    updateColors: function( radioVal ) {
+
+        if( radioVal == "tags" ) {
+        	
+        	this.personsSelection.text(  function( d ) { return ( d.data && d.data.tags_types_name ) ? d.name + " - " + d.data.tags_types_name : d.name; } );
+
+        } else if( radioVal == "parties" ) {
+        	
+        	this.personsSelection.text(  function( d ) { return ( d.data && d.data.organization_abbr ) ? d.name + " - " + d.data.organization_abbr : d.name; } );
+
+        }
+
+    }
 
 }
 

@@ -46,8 +46,8 @@
 				<div id="color-panel" class="panel">
 					<a href="#" class="color-btn btn">Rozlišit <span class="dropdown-arrow-down"></span></a>
 					<div class="control-menu">
-						<input type="radio" name="group-radio-group" value="parties" checked="true">Politická příslušnost<br />
-						<input type="radio" name="group-radio-group" value="tags">Povolání osoby
+						<input type="radio" name="color-radio-group" value="parties" checked="true">Politická příslušnost<br />
+						<input type="radio" name="color-radio-group" value="tags">Povolání osoby
 					</div>
 				</div>
 				<div id="filter-panel" class="panel">

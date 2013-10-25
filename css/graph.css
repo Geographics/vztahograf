@@ -165,16 +165,22 @@ text {
 /**
 * TAGS
 */
-.politician {	fill: #fff119; }
-.businessman {	fill: #fdb730; }
-.lawyer {	fill: #fd4c4d; }
-.manager {	fill: #cc1c8c; }
-.economist {	fill: #815caf; }
-.lobbist {	fill: #568bd9; }
-.judge {	fill: #1dbae0; }
-.bureaucrat {	fill: #27ad7d; }
-.developer {	fill: #95ce30; }
-
+.politician {	fill: #26775b; }
+.businessman {	fill: #269f74; }
+.lawyer {	fill: #6bc132; }
+.manager {	fill: #b0d13c; }
+.economist {	fill: #ffcf26; }
+.lobbist {	fill: #ffa126; }
+.judge {	fill: #ff7b29; }
+.bureaucrat {	fill: #fe2628; }
+.developer {	fill: #fe26a0; }
+.executor {	fill: #c529cf; }
+.advisor {	fill: #8853a7; }
+.state-deputy {	fill: #616ab0; }
+.policeman {	fill: #2998cc; }
+.spokesperson {	fill: #fbee26; }
+.syndicate {	fill: #2bcdf4; }
+			
 /**
 *	POPUP BOX
 */

@@ -34,15 +34,31 @@ Kauzality.PopupBox.prototype = {
 
 	},
 
-	showTitle: function( title, organization_abbr ) {
+	showTitle: function( title, organization_abbr, color_mode ) {
 		//remove displayed menu
 		this.element.selectAll( "li" ).remove();
 
 		this.show();
 		
-		if( !organization_abbr ) this.title.text( title );
-		else this.title.text( title + " - " + organization_abbr );
+		if( color_mode == "parties" ) {
 
+			if( !organization_abbr ) this.title.text( title );
+			else this.title.text( title + " - " + organization_abbr );
+
+		} else if( color_mode == "tags" ) {
+			
+			console.log( "tags", organization_abbr );
+
+			if( !organization_abbr ) { 
+				console.log( "no tag");
+				this.title.text( title );
+			}
+			else {
+				console.log( "tag" );
+				this.title.text( title + " - " + organization_abbr );
+			}
+		}
+		
 	},
 
 	showMenu: function( names, links ) {

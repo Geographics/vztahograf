@@ -21,6 +21,8 @@ Kauzality.Graph = function( linkData ) {
     this.lastTranslate;
     this.lastScale;
 
+    this.colorMode = "parties";
+
     //add events
     this.$document = $( document );
     this.$document.on( Kauzality.Panel.NODE_OVER, function( event, id ) {
@@ -439,8 +441,9 @@ Kauzality.Graph.prototype = {
 
     updateColors: function( radioVal ) {
 
+        this.colorMode = radioVal;
+
         if( radioVal == "tags" ) {
-            console.log( "udpateColors", radioVal );
             this.rectSelection.attr( "class", function( d ) { return d.getTagClass(); } )
         } else if( radioVal == "parties" ) {
             this.rectSelection.attr( "class", function( d ) { return d.getOrganizationClass(); } )
@@ -528,7 +531,12 @@ Kauzality.Graph.prototype = {
         y -= offsetY;
 
         this.popupBox.moveTo( x , y );
-        this.popupBox.showTitle( targetNode.name, targetNode.data.organization_abbr );
+
+        console.log( "targetNode.data", targetNode.data );
+        console.log( " targetNode.data.tags_types_name",  targetNode.data.tags_types_name );
+
+        if( this.colorMode == "parties" ) this.popupBox.showTitle( targetNode.name, targetNode.data.organization_abbr, this.colorMode );
+        else if( this.colorMode == "tags" ) this.popupBox.showTitle( targetNode.name, targetNode.data.tags_types_name, this.colorMode );
 
     },
 
