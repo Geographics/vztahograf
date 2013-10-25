@@ -38,6 +38,8 @@
 |
 */
 
+
+$route['data'] = "relations";
 $route['default_controller'] = "graph";
 
 $route['404_override'] = '';

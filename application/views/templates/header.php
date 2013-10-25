@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title><?php echo $title ?> - Kauzality</title>
+        <title>VZTAHOGRAF - Zdrojová data</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -22,11 +22,9 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <script src="<?php echo base_url(); ?>js/main.js"></script>
-    
+        
+        
     </head>
     <body>
 
-        <?php if( !isset( $hideBackBtn ) || !$hideBackBtn ) : ?>
-            <a href="<?php echo base_url(); ?>index.php">Zpět na hlavní stránku</a>
-        <?php endif; ?>
-    	<h1>Kauzality</h1>
+    	<h1>Vztahograf</h1>

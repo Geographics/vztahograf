@@ -51,7 +51,7 @@
 					</div>
 				</div>
 				<div id="about-panel" class="panel">
-					<a href="o-datech" class="about-btn btn" title="O Vztahografu">?</a>
+					<a href="o-datech" class="about-btn btn" title="O Vztahografu">O projektu</a>
 				</div>
 			</div>
 		</header>
