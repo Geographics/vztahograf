@@ -258,13 +258,13 @@ text {
 
 	/* over states for icons */
 	#popup-box .sublist a:hover .relation-icon {
-		background-position: -60px -23px;
+		background-position: -36px -23px;
 	}
 	#popup-box .sublist a:hover .relation-icon-from {
-		background-position: -152px -23px;
+		background-position: -130px -23px;
 	}
 	#popup-box .sublist a:hover .relation-icon-to {
-		background-position: -107px -23px;
+		background-position: -84px -23px;
 	}
 	
 
