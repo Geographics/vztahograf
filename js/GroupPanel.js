@@ -6,7 +6,8 @@ Kauzality.GroupPanel = function() {
 	this.$element = $( "#group-panel" );
 
 	this.$a = this.$element.find( "a" );
-	this.$a.on( "click", $.proxy( this.onAclick, this ) );
+	this.$element.on( "mouseover", $.proxy( this.onMouseover, this ) );
+	this.$element.on( "mouseout", $.proxy( this.onMouseout, this ) );
 	this.$arrowSpan = this.$a.find( "span" );
 
 	this.$checkboxes = this.$element.find( "input[type='radio']" );
@@ -20,14 +21,22 @@ Kauzality.GroupPanel = function() {
 
 Kauzality.GroupPanel.prototype = {
 
-	onAclick: function( evt ) {
+	onMouseover: function( evt ) {
 
 		evt.preventDefault();
 		this.$element.toggleClass( "open" );
 
 		this.$arrowSpan.toggleClass( "dropdown-arrow-up", this.$element.hasClass( "open" ) );
-		this.$document.trigger( Kauzality.GroupPanel.GROUP_PANEL_OPEN );
+		//this.$document.trigger( Kauzality.FilterPanel.FILTERS_PANEL_OPEN );
+	},
 
+	onMouseout: function( evt ) {
+
+		evt.preventDefault();
+		this.$element.toggleClass( "open" );
+
+		this.$arrowSpan.toggleClass( "dropdown-arrow-up", this.$element.hasClass( "open" ) );
+		//this.$document.trigger( Kauzality.FilterPanel.FILTERS_PANEL_OPEN );
 	},
 	
 	onRadioChange: function( radioVal ) {
