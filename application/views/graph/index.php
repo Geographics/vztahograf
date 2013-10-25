@@ -51,7 +51,7 @@
 					</div>
 				</div>
 				<div id="about-panel" class="panel">
-					<a href="o-datech" class="about-btn btn" title="O datech">O datech</a>
+					<a href="o-datech" class="about-btn btn" title="O Vztahografu">O Vztahografu</a>
 				</div>
 			</div>
 		</header>
@@ -68,6 +68,12 @@
 			<a href="#" class="zoom-out zoom-btn" title="Oddálit"><span class="zoom-out-icon"></span></a>
 		</div>
 		
+		<div id="about-page" class="clearfix">
+			<a href="#" class="about-page-close-btn ir" title="Zavřít O Vztahografu">Zavřít</a>
+			<h2>O Vztahografu</h2>
+			<p>všechna data pochází z “Mapy české korupce” vytvořené Nadačním fondem proti korupci na <a href="http://www.nfpk.cz/_userfiles/soubory/mapa/4_graf.pdf" target="_blank" title="Zdroj dat">tadytom linku.</a></p>
+		</div>
+
 
 		<script type="text/javascript" src="<?php echo base_url(); ?>js/vendor/d3.min.js"></script>
 

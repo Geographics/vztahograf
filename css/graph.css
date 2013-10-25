@@ -282,6 +282,7 @@ text {
 	bottom: 20px;
 	overflow: auto;
 
+	z-index: 3;
 }
 	#list-panel .total {
 		margin-bottom: 20px;
@@ -342,6 +343,47 @@ text {
 			}
 		#zoom-panel .zoom-btn:hover {
 			background-color: #00ffde;
+		}
+
+
+/**
+* ABOUT PAGE
+*/
+
+#about-page {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	
+	z-index: 1002;
+	overflow: auto;
+	width: 400px;
+	height: 300px;
+	margin-left: -200px;
+	margin-top: -150px;
+	padding: 30px;
+
+	color: white;
+
+	/* transparent #333 */
+	background-color: rgb( 51, 51, 51 );
+	background-color: rgba( 51, 51, 51, .9 );
+
+	display: none;
+}
+
+	#about-page a {
+		color: #00ffde;
+	}
+
+	.about-page-close-btn {
+		float: right;
+	}
+		.about-page-close-btn:hover {
+			background: url(../img/spritesheet.png) -36px -35px no-repeat;
+			display: inline-block;
+			width: 18px;
+			height: 17px;
 		}
 
 

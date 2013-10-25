@@ -34,6 +34,18 @@ Kauzality.App.prototype = {
 	    zoomInBtn.on( "click", $.proxy( this.onZoomInBtnClick, this ) );
 	    zoomOutBtn.on( "click", $.proxy( this.onZoomOutBtnClick, this ) );
 
+	    //about page
+	    var $aboutPage = $( "#about-page" );
+	    var $aboutLink = $( "#about-panel" ).find( "a" );
+	    var $aboutCloseBtn = $( ".about-page-close-btn" );
+	    $aboutLink.on( "click", function( evt ) {
+	    	evt.preventDefault();
+	    	$aboutPage.fadeToggle( 200 );
+	    } );
+	    $aboutCloseBtn.on( "click", function( evt ) {
+	    	evt.preventDefault();
+	    	$aboutPage.fadeOut( 200 );
+	    } );
 	},
 
 	onSvgMouseUp: function( evt ) {
