@@ -708,8 +708,12 @@ Kauzality.Graph.prototype = {
 
     onZoom: function( evt ) {
         
-        if( this.lockCanvasDrag ) return;
-        
+        if( this.lockCanvasDrag ) { 
+            this.zoom.translate( this.lastTranslate );
+            this.zoom.scale( this.lastScale );
+            return;
+        }
+
         //update zoom constants
         this.gWrapper.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
 
