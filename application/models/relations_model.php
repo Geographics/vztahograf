@@ -97,12 +97,11 @@
 			}
 
 			//$query = $this->db->get_where( "persons", array( "id" => $id ) );
-			$this->db->select("persons.*, in_positions.fk_organizations, organizations.abbr as organization_abbr, tags_types.name as tags_types_name");
+			$this->db->select("persons.*, in_positions.fk_organizations, organizations.abbr as organization_abbr");
 			$this->db->from("persons");
 			$this->db->where( "persons.id", $id );
 			$this->db->join( "in_positions", "persons.id = in_positions.fk_persons" );
 			$this->db->join( "organizations", "in_positions.fk_organizations = organizations.id" );
-			$this->db->join( "tags_types", "persons.fk_tags_types = tags_types.id" );
 			$query = $this->db->get();
 
 			//print_r( $this->db->last_query() );
@@ -111,7 +110,12 @@
 			if( $query->num_rows() == 0) {
 				$query = $this->db->get_where( "persons", array( "id" => $id ) );
 			}
-		
+
+			return $query->row_array();
+		}
+
+		public function get_tag( $id = FALSE ) {
+			$query = $this->db->get_where( "tags_types", array( "id" => $id ) );
 			return $query->row_array();
 		}
 
@@ -154,6 +158,7 @@
 					$results  = $this->get_positions( $id );
 					break;
 			}
+
 			return $results;
 		}
 
@@ -170,8 +175,16 @@
 			foreach ($query->result_array() as $row) {
 
 				$firstEntityInfo = $this->getEntityInformation( $row[ "fk_first_entity" ] );
+				if( isset( $firstEntityInfo["fk_tags_types"] ) ) {
+					$firstEntityInfo["tags_types_name"] = $this->get_tag( $firstEntityInfo[ "fk_tags_types" ] )["name"];
+				}
+				
 				//print_r( $firstEntityInfo );
 				$secondEntityInfo = $this->getEntityInformation( $row[ "fk_second_entity" ] );
+				if( isset( $secondEntityInfo["fk_tags_types"] ) ) {
+					$secondEntityInfo["tags_types_name"] = $this->get_tag( $secondEntityInfo[ "fk_tags_types" ] )["name"];
+				}
+
 				//print_r( $secondEntityInfo );
 
 				//normalize column names
