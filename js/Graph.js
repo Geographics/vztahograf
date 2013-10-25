@@ -210,6 +210,7 @@ Kauzality.Graph.prototype = {
 
         //reset values
         angle = startAngle;
+        groupGap /= 1.5;
         tagGroups.forEach( function( tagGroupKey ) {
 
             var tagGroup = tagGroups.get( tagGroupKey );
