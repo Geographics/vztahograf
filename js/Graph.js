@@ -1,6 +1,6 @@
 Kauzality.Graph = function( linkData ) {
 
-    console.log( "linkData", linkData );
+    //console.log( "linkData", linkData );
 
     var self = this;
 
@@ -533,11 +533,8 @@ Kauzality.Graph.prototype = {
 
         this.popupBox.moveTo( x , y );
 
-        console.log( "targetNode.data", targetNode.data );
-        console.log( " targetNode.data.tags_types_name",  targetNode.data.tags_types_name );
-
         if( this.colorMode == "parties" ) this.popupBox.showTitle( targetNode.name, targetNode.data.organization_abbr, this.colorMode );
-        else if( this.colorMode == "tags" ) this.popupBox.showTitle( targetNode.name, targetNode.data.tags_types_name, this.colorMode );
+        else if( this.colorMode == "tags" ) this.popupBox.showTitle( targetNode.name, targetNode.data.tags_types_name.name, this.colorMode );
 
     },
 

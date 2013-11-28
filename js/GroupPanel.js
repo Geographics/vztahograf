@@ -17,6 +17,8 @@ Kauzality.GroupPanel = function() {
 		self.onRadioChange( $(this).val() );
 	});
 	
+	//check by default radio one
+	this.$checkboxes.eq(0).attr('checked', 'checked');
 }
 
 Kauzality.GroupPanel.prototype = {

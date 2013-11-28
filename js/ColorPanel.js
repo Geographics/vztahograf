@@ -16,6 +16,9 @@ Kauzality.ColorPanel = function() {
 	this.$checkboxes.on( "change", function( evt ) {
 		self.onRadioChange( $(this).val() );
 	});
+
+	//check by default radio one
+	this.$checkboxes.eq(0).attr('checked', 'checked');
 	
 }
 

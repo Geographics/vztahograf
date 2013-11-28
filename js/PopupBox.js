@@ -47,14 +47,10 @@ Kauzality.PopupBox.prototype = {
 
 		} else if( color_mode == "tags" ) {
 			
-			console.log( "tags", organization_abbr );
-
 			if( !organization_abbr ) { 
-				console.log( "no tag");
 				this.title.text( title );
 			}
 			else {
-				console.log( "tag" );
 				this.title.text( title + " - " + organization_abbr );
 			}
 		}

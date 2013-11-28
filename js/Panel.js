@@ -109,7 +109,7 @@ Kauzality.Panel.prototype = {
 
         if( radioVal == "tags" ) {
         	
-        	this.personsSelection.text(  function( d ) { return ( d.data && d.data.tags_types_name ) ? d.name + " - " + d.data.tags_types_name : d.name; } );
+        	this.personsSelection.text(  function( d ) { return ( d.data && d.data.tags_types_name && d.data.tags_types_name.name ) ? d.name + " - " + d.data.tags_types_name.name : d.name; } );
 
         } else if( radioVal == "parties" ) {
         	

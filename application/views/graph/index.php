@@ -1,3 +1,8 @@
+<?php 
+	$compiledCss = true;
+	$compiledJs = true;
+?>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -8,20 +13,20 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>VZTAHOGRAF</title>
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta content="width=1200" name="viewport">
 
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-		
-        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-  		<link href="<?php echo base_url(); ?>css/normalize.css" rel="stylesheet" type="text/css" />
-        <link href="<?php echo base_url(); ?>css/main.css" rel="stylesheet" type="text/css" />
-		
-        <link href="<?php echo base_url(); ?>css/spritesheet.css" rel="stylesheet" type="text/css" />
-        <!--<link href="<?php echo base_url(); ?>css/2@spritesheet.css" rel="stylesheet" type="text/css" media="(-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi)" />
-		-->
-
-        <link href="<?php echo base_url(); ?>css/graph.css" rel="stylesheet" type="text/css" />
-
+        <?php if ($compiledCss): ?>
+        	<link href="<?php echo base_url(); ?>css/styles.css" rel="stylesheet" type="text/css" />
+	    <?php else: ?>
+        	<link href="<?php echo base_url(); ?>css/jquery.jscrollpane.css" rel="stylesheet" type="text/css" />
+	        <link href="<?php echo base_url(); ?>css/normalize.css" rel="stylesheet" type="text/css" />
+	        <link href="<?php echo base_url(); ?>css/main.css" rel="stylesheet" type="text/css" />
+			<link href="<?php echo base_url(); ?>css/spritesheet.css" rel="stylesheet" type="text/css" />-->
+	        <!--<link href="<?php echo base_url(); ?>css/2@spritesheet.css" rel="stylesheet" type="text/css" media="(-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi)" />
+			-->
+			<link href="<?php echo base_url(); ?>css/graph.css" rel="stylesheet" type="text/css" />
+		<?php endif; ?>
+        
         <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
 
         <script src="<?php echo base_url(); ?>js/vendor/modernizr-2.6.2.min.js"></script>
@@ -98,32 +103,45 @@
 			</article>
 		</div>
 
-		<script type="text/javascript" src="<?php echo base_url(); ?>js/vendor/d3.min.js"></script>
-
-		<script type="text/javascript" src="<?php echo base_url(); ?>js/globals.js"></script>
-		<script type="text/javascript" src="<?php echo base_url(); ?>js/shims.js"></script>
-
-		<script type="text/javascript" src="<?php echo base_url(); ?>js/utils/OrganizationsUtil.js"></script>
+		<!--<script type="text/javascript" src="<?php echo base_url(); ?>js/vendor/jquery.jscrollpane.min.js"></script>
+		<script type="text/javascript" src="<?php echo base_url(); ?>js/vendor/jquery.mousewheel.js"></script>
+		-->
 		
-		<script type="text/javascript" src="<?php echo base_url(); ?>js/Links.js"></script>
-		<script type="text/javascript" src="<?php echo base_url(); ?>js/Link.js"></script>
-		<script type="text/javascript" src="<?php echo base_url(); ?>js/Nodes.js"></script>
-		<script type="text/javascript" src="<?php echo base_url(); ?>js/Node.js"></script>
+		<?php if ($compiledJs): ?>
+			<script type="text/javascript" src="<?php echo base_url(); ?>js/scripts-ck.js"></script>
+		<?php else: ?>
+			<script type="text/javascript" src="<?php echo base_url(); ?>js/vendor/d3.min.js"></script>
 		
-		<script type="text/javascript" src="<?php echo base_url(); ?>js/FilterPanel.js"></script>
-		<script type="text/javascript" src="<?php echo base_url(); ?>js/ColorPanel.js"></script>
-		<script type="text/javascript" src="<?php echo base_url(); ?>js/GroupPanel.js"></script>
-		<script type="text/javascript" src="<?php echo base_url(); ?>js/PopupBox.js"></script>
-		<script type="text/javascript" src="<?php echo base_url(); ?>js/Graph.js"></script>
-		<script type="text/javascript" src="<?php echo base_url(); ?>js/Panel.js"></script>
+			<script type="text/javascript" src="<?php echo base_url(); ?>js/globals.js"></script>
+			<script type="text/javascript" src="<?php echo base_url(); ?>js/shims.js"></script>
 
-		<script type="text/javascript" src="<?php echo base_url(); ?>js/App.js"></script>
+			<script type="text/javascript" src="<?php echo base_url(); ?>js/utils/OrganizationsUtil.js"></script>
+			
+			<script type="text/javascript" src="<?php echo base_url(); ?>js/Links.js"></script>
+			<script type="text/javascript" src="<?php echo base_url(); ?>js/Link.js"></script>
+			<script type="text/javascript" src="<?php echo base_url(); ?>js/Nodes.js"></script>
+			<script type="text/javascript" src="<?php echo base_url(); ?>js/Node.js"></script>
+			
+			<script type="text/javascript" src="<?php echo base_url(); ?>js/FilterPanel.js"></script>
+			<script type="text/javascript" src="<?php echo base_url(); ?>js/ColorPanel.js"></script>
+			<script type="text/javascript" src="<?php echo base_url(); ?>js/GroupPanel.js"></script>
+			<script type="text/javascript" src="<?php echo base_url(); ?>js/PopupBox.js"></script>
+			<script type="text/javascript" src="<?php echo base_url(); ?>js/Graph.js"></script>
+			<script type="text/javascript" src="<?php echo base_url(); ?>js/Panel.js"></script>
+
+			<script type="text/javascript" src="<?php echo base_url(); ?>js/App.js"></script>
+		<?php endif; ?>
 
 		<script>
 
 			var linkData = <?php echo json_encode($relations); ?>;
 			var app = new Kauzality.App();
 			app.init( linkData );
+
+			/*$(function()
+			{
+				$('#list-panel').jScrollPane();
+			});*/
 
 		</script>
 

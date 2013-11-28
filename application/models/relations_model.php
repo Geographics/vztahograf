@@ -176,13 +176,13 @@
 
 				$firstEntityInfo = $this->getEntityInformation( $row[ "fk_first_entity" ] );
 				if( isset( $firstEntityInfo["fk_tags_types"] ) ) {
-					$firstEntityInfo["tags_types_name"] = $this->get_tag( $firstEntityInfo[ "fk_tags_types" ] )["name"];
+					$firstEntityInfo["tags_types_name"] = $this->get_tag( $firstEntityInfo[ "fk_tags_types" ] );
 				}
 				
 				//print_r( $firstEntityInfo );
 				$secondEntityInfo = $this->getEntityInformation( $row[ "fk_second_entity" ] );
 				if( isset( $secondEntityInfo["fk_tags_types"] ) ) {
-					$secondEntityInfo["tags_types_name"] = $this->get_tag( $secondEntityInfo[ "fk_tags_types" ] )["name"];
+					$secondEntityInfo["tags_types_name"] = $this->get_tag( $secondEntityInfo[ "fk_tags_types" ] );
 				}
 
 				//print_r( $secondEntityInfo );
