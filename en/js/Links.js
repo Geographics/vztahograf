@@ -1,0 +1,3 @@
+Kauzality.Links = function() {
+
+}
